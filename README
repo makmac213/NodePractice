@@ -1,0 +1,29 @@
+Learning Node.js
+
+
+
+What I learned.
+
+request.headers
+e.g:
+	{ host: 'localhost:8888',
+	  connection: 'keep-alive',
+	  'cache-control': 'max-age=0',
+	  'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/535.2 (KHTML, like Gecko) Ubuntu/10.04 Chromium/15.0.874.106 Chrome/15.0.874.106 Safari/535.2',
+	  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+	  'accept-encoding': 'gzip,deflate,sdch',
+	  'accept-language': 'en-US,en;q=0.8',
+	  'accept-charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+	  cookie: 'csrftoken=fac40e48f1ee0d57f3a5c64edf30b0f0; sessionid=8cc03ab21b4bbb23db483c97f05f4dd4; toolbarDisplay=none; ZDEDebuggerPresent=php,phtml,php3' }
+
+request.method
+e.g: GET, POST, DELETE
+
+url.parse(request.url)
+e.g:
+	{ search: '?a=b&c=d',
+	  query: 'a=b&c=d',
+	  pathname: '/home',
+	  path: '/home?a=b&c=d',
+	  href: '/home?a=b&c=d' }
+
