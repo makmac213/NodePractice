@@ -13,6 +13,8 @@ var SETTINGS = {
 
 var DS = '/';
 
+var universal = '';
+
 http.createServer(function(request, response) {
 	requestLogger(request)
 	processRequest(request, response);
@@ -22,22 +24,29 @@ http.createServer(function(request, response) {
 
 // log all requests
 function requestLogger(request){
-	
+	//console.log(request.headers.cookie);
 }
 
 // request handler
 function processRequest(request, response){
 	requestData = url.parse(request.url);
-	if(requestData.pathname != '/favicon.ico'){
+	if(requestData.pathname != '/favicon.ico' && requestData.pathname != '/'){
 		if(requestData.pathname.substr(-3)=='css'){
 			retVal = readfile(requestData.pathname);
 			response.writeHead(200, {"Content-Type": "text/css"});
+		}else if(requestData.pathname=='/update'){
+			//retVal = Math.random().toString();
+			retVal = universal;
+		}else if(requestData.pathname=='/sendMessage'){
+			universal += requestData.query + '<br />';
+			console.log(universal);
+			retVal = '1';
 		}else{
 			retVal = readfile(requestData.pathname);
 			response.writeHead(200, {"Content-Type": "text/html"});
 		}
 		response.write(retVal)
-		response.write(SETTINGS.APP_DIRECTORY.TEMPLATES + requestData.pathname);
+		//response.write(SETTINGS.APP_DIRECTORY.TEMPLATES + requestData.pathname);
 	}
 }
 
