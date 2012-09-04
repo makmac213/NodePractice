@@ -13,7 +13,7 @@ var SETTINGS = {
 
 var DS = '/';
 
-var universal = '';
+var globalChatLog = '';
 
 http.createServer(function(request, response) {
 	requestLogger(request)
@@ -36,11 +36,11 @@ function processRequest(request, response){
 			response.writeHead(200, {"Content-Type": "text/css"});
 		}else if(requestData.pathname=='/update'){
 			//retVal = Math.random().toString();
-			retVal = universal;
+			retVal = globalChatLog;
 		}else if(requestData.pathname=='/sendMessage'){
 			query = querystring.parse(requestData.query)
-			universal += '<span id="chatName">' + query['username'] + '</span>: ' + query['message'] + '<br />';
-			console.log(universal);
+			globalChatLog += '<span class="chatName">' + query['username'] + '</span><span>: ' + query['message'] + '<br /></span>';
+			//console.log(globalChatLog);
 			retVal = '1';
 		}else{
 			retVal = readfile(requestData.pathname);

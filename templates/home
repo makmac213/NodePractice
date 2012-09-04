@@ -32,8 +32,11 @@
 				url:'http://172.29.19.115:8888/update',
 				type: 'GET',
 				success: function(data){
-					$('#chatField').html(decodeURIComponent(data));
-					$('#chatField').scrollTop($('#chatField').height())
+					//console.log(data);
+					//$('#chatField').html('');
+					$('#chatField').html('<div class="messages">'+data+'</div>');
+					//$('#chatField').html('<div>'+decodeURIComponent(data)+'</div>');
+					$('#chatField').scrollTop($('#chatField').height());
 				}
 			});
 		}
@@ -47,16 +50,16 @@
 				url:'http://172.29.19.115:8888/sendMessage',
 				type: 'GET',
 				data: {
-						'message':$('#myMessage').val(),
-						'username':$('#myUsername').val()
+						'message':$('#myMessage').val().replace(/<(?:.|\n)*?>/gm, ''),
+						'username':$('#myUsername').val().replace(/<(?:.|\n)*?>/gm, '')
 						},
 				success: function(data){
 					$('#myMessage').focus();
-					$('#status').html('<small>Message Sent</small>');
+					$('#status').html('<small>Message Sent</small>').fadeOut(3000);
 				},
 				error: function(data){
 					$('#myMessage').focus();
-					$('#status').html('<small>Retry</small>').fadeOut(5000);
+					$('#status').html('<small>Retry</small>').fadeOut(3000);
 				}
 			});			
 		});
