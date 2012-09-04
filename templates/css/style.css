@@ -1,3 +1,27 @@
 body{
 	background: #fff;
+	font-family: arial;
+	padding: 100px 0px 0px 0px;
 }
+
+#chatContainer{
+	border: 1px solid #999;
+	margin:0 auto;
+	padding: 20px 20px;
+	width:300px;
+}
+
+#chatField{
+	background: whitesmoke;
+	border: 1px solid #999;
+	height:250px;
+	margin: 5px 0px 10px 0px;
+	overflow: auto;
+	padding: 5px 5px;
+	width: 290px;
+}
+
+#chatName{
+	color: #00f;
+}
+

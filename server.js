@@ -38,7 +38,8 @@ function processRequest(request, response){
 			//retVal = Math.random().toString();
 			retVal = universal;
 		}else if(requestData.pathname=='/sendMessage'){
-			universal += requestData.query + '<br />';
+			query = querystring.parse(requestData.query)
+			universal += '<span id="chatName">' + query['username'] + '</span>: ' + query['message'] + '<br />';
 			console.log(universal);
 			retVal = '1';
 		}else{
